@@ -6,6 +6,8 @@
 #include <spa/pod/parser.h>
 #include <spa/pod/iter.h>
 #include <spa/param/props.h>
+#include <spa/debug/pod.h>
+
 
 /*
  * Format LTV, length(32 bits) type(32 bits) value
@@ -145,6 +147,15 @@ main(int argc, char* argv[])
 		SPA_POD_Int(&fval));
 	printf("parser (3) found int with val: %i\n", val);
 	printf("parser (3) found float with val: %f\n", fval);
+
+	
+	// use debug to dump the pod structure
+	// see also https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/src/tools/pw-dump.c
+	// to dump as json
+	puts("");
+	spa_debug_pod(2, NULL, pod);
+	puts("");
+	spa_debug_pod(2, NULL, obj_pod);
 
 	// dumping the buffer content in a file
 	FILE *outfile = fopen("buffer.dump", "wb");
