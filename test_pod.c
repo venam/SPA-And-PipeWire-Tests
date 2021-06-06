@@ -35,6 +35,8 @@ main(int argc, char* argv[])
 	// This initialized a pod zone on the stack inside buffer.
 	// We can write data in it.
 	spa_pod_builder_init(&b, buffer, sizeof(buffer));
+	// or another way
+	//struct spa_pod_builder b = SPA_POD_BUILDER_INIT(buffer, sizeof(buffer));
 
 	// the frame is a pointer to the current structure
 	// it has a start and an end to determine the scope
