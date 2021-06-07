@@ -119,6 +119,7 @@ registry_event_global(void *userdata, uint32_t id,
 	pw_main_loop_run(data->loop);
 	// safely remove the hook once we got the param we wanted
 	spa_hook_remove(&node_listener);
+	pw_proxy_destroy((struct pw_proxy*)node);
 }
 
 static const struct pw_registry_events
