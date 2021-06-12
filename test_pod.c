@@ -7,6 +7,7 @@
 #include <spa/pod/iter.h>
 #include <spa/param/props.h>
 #include <spa/debug/pod.h>
+#include <spa/debug/mem.h>
 
 
 /*
@@ -176,15 +177,18 @@ main(int argc, char* argv[])
 	type   = 0000000e = 14 = SPA_TYPE_Struct
 	value  =
 		length   = 00000004 = 4
-		type     = 00000004 = SPA_POD_Int
+		type     = 00000004 = SPA_TYPE_Int
 		value    = 00000005 = 5
 		_padding = 00000000 (always align to 8 bytes)
 
 		length   = 00000004 = 4
-		type     = 00000006 = SPA_POD_Float
+		type     = 00000006 = SPA_TYPE_Float
 		value    = 40490e56 = 3.1415
 		_padding = 00000000 (always align to 8 bytes)
 	 */
+
+	// helper /spa/debug/mem.h to dump mem but not in little-endian
+	//spa_debug_mem(4, (void *)buffer, pod->size+4+4);
 
 	return 0;
 }
